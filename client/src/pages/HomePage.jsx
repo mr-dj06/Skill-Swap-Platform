@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import UserProfileSlice from "../components/UserProfileSlice";
 import Pagination from "../components/Pagination";
+import HeaderSlice from "../components/HeaderSlice";
 
-// Sample users (mock data)
 const users = [
   {
     id: 1,
@@ -25,7 +25,7 @@ const users = [
     rating: 4.6,
     status: 'available',
   },
-  // Add more users if needed to test pagination
+  
 ];
 
 const USERS_PER_PAGE = 1;
@@ -40,18 +40,11 @@ function HomePage() {
   return (
     <div className="relative min-h-screen bg-gray-50 pb-10">
       <Navbar />
+      <HeaderSlice />
 
       <div className="p-6 max-w-4xl mx-auto">
         <h1 className="text-2xl font-bold mb-4">Skill Swap Users</h1>
 
-        {/* Search Bar */}
-        <div className="mb-6">
-          <input
-            type="text"
-            placeholder="Search by skill or name..."
-            className="w-full px-4 py-2 border rounded-md shadow-sm"
-          />
-        </div>
 
         {/* User Slices */}
         {currentUsers.map((user) => (

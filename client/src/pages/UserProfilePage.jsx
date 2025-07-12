@@ -1,4 +1,5 @@
 import React from 'react';
+import UserProfilePhoto from '../components/UserProfilePhoto';
 
 function UserProfilePage() {
   const user = {

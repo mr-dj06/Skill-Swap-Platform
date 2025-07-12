@@ -1,9 +1,20 @@
 import "./App.css";
-import Home from "./pages/home";
+import HomePage from "./pages/HomePage";
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/LoginPage";
+import UserProfilePage from "./pages/UserProfilePage";
+import UserRequestHistoryPage from "./pages/UserRequestHistoryPage";
+import UserRequestPage from "./pages/UserRequestPage";
+
 function App() {
   return (
     <>
-      <Home />
+      <UserRequestHistoryPage />
+      <UserRequestPage />
+      <HomePage />
+      <LandingPage />
+      <LoginPage />
+      <UserProfilePage />
     </>
   );
 }

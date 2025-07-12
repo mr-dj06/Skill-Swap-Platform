@@ -9,7 +9,7 @@ Darshan Jethava - TL
 
 darshanjethava.vrl@gmail.com
 
-Satyajeetsinh Jadedja
+Satyajeetsinh Jadeja
 
 jadejasd1818@gmail.com
 

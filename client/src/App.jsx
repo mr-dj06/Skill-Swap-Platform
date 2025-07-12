@@ -1,9 +1,17 @@
 import "./App.css";
-import Home from "./pages/home";
+import HomePage from "./pages/HomePage";
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/LoginPage";
+import UserProfilePage from "./pages/UserProfilePage";
+
 function App() {
   return (
     <>
-      <Home />
+      <LandingPage />
+      <HomePage />
+      <LoginPage />
+      <UserProfilePage />
+      
     </>
   );
 }

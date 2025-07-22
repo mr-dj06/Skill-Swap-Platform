@@ -1,4 +1,6 @@
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
+
+import ProtectedRoute from "./context/ProctedRoute";
 import HomePage from "./pages/HomePage";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
@@ -8,14 +10,35 @@ import UserRequestPage from "./pages/UserRequestPage";
 
 function App() {
   return (
-    <>
-      <UserRequestHistoryPage />
-      <UserRequestPage />
-      <HomePage />
-      <LandingPage />
-      <LoginPage />
-      <UserProfilePage />
-    </>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/home" element={<HomePage />} />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <UserProfilePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/requests/:id"
+        element={
+          // <ProtectedRoute>
+            <UserRequestPage />
+          // </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/history"
+        element={
+          // <ProtectedRoute>
+            <UserRequestHistoryPage />
+          // </ProtectedRoute>
+        }
+      />
+    </Routes>
   );
 }
 

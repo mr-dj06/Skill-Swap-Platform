@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 function LandingPage() {
   return (
@@ -17,12 +18,12 @@ function LandingPage() {
             No money, just mutual growth.
           </p>
           <div className="flex justify-center gap-4">
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-md text-lg hover:bg-blue-700 transition">
+            <Link to="/home" className="bg-blue-600 text-white px-6 py-3 rounded-md text-lg hover:bg-blue-700 transition">
               Get Started
-            </button>
-            <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-md text-lg hover:bg-blue-50 transition">
+            </Link>
+            {/* <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-md text-lg hover:bg-blue-50 transition">
               Explore Users
-            </button>
+            </button> */}
           </div>
         </div>
       </section>
@@ -65,9 +66,9 @@ function LandingPage() {
           <p className="text-gray-600 mb-6">
             Join a platform where learning is collaborative and cost-free.
           </p>
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-md text-lg hover:bg-blue-700 transition">
+          <Link to="/login" className="bg-blue-600 text-white px-6 py-3 rounded-md text-lg hover:bg-blue-700 transition">
             Join Now
-          </button>
+          </Link>
         </div>
       </section>
     </div>

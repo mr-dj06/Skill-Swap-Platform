@@ -1,5 +1,28 @@
 import User from "../models/user.model.js";
 
+// GET /api/user/:id
+export const getUserById = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id).select("-password -__v");
+    if (!user || !user.isPublic) {
+      return res.status(404).json({ message: "User not found or not public" });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    next(err);
+  }
+};
+
+// GET all users
+export const getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.find({ isPublic: true }).select("-password -__v");
+    res.status(200).json(users);
+  } catch (err) {
+    next(err);
+  }
+};
+
 // GET /api/users/search?skill=react
 export const searchBySkill = async (req, res, next) => {
   try {

@@ -1,59 +1,73 @@
-import React from 'react';
+function UserProfileSlice({ user, onClick }) {
+  const {
+    name = "Anonymous",
+    avatar = "👤",
+    location = "Unknown",
+    skillsOffered = [],
+    skillsWanted = [],
+    rating = 0,
+    status = "available",
+  } = user || {};
 
-function UserProfileSlice({ user }) {
   return (
-    <div className="flex justify-between items-start p-4 border rounded-lg shadow-sm bg-white w-full max-w-2xl mx-auto mb-4">
-      {/* Left: Avatar in Circle */}
-      <div className="flex-shrink-0 mr-4">
-        <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-3xl">
-          {user.avatar}
+    <div onClick={onClick} className="bg-white shadow-md rounded-lg p-4 mb-4 cursor-pointer">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div className="text-3xl">{avatar}</div>
+        <div>
+          <h2 className="text-lg font-semibold flex items-center gap-2">
+            {name}
+            <span
+              className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                status === "available"
+                  ? "bg-green-100 text-green-700"
+                  : "bg-gray-200 text-gray-600"
+              }`}
+            >
+              {status}
+            </span>
+          </h2>
+          <p className="text-sm text-gray-500">{location}</p>
         </div>
       </div>
 
-      {/* Middle: Info */}
-      <div className="flex-1">
-        <h3 className="text-lg font-semibold">{user.name}</h3>
-
-        {/* Offered Skills */}
-        <div className="mt-2">
-          <span className="text-sm font-medium text-gray-600">Offers:</span>
-          <div className="flex flex-wrap gap-2 mt-1">
-            {user.offeredSkills.map((skill, index) => (
-              <span
-                key={index}
-                className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full"
-              >
+      {/* Skills Offered */}
+      <div className="mt-4">
+        <p className="text-sm font-semibold text-gray-700">Offers:</p>
+        <ul className="flex flex-wrap gap-2 mt-1">
+          {skillsOffered.length ? (
+            skillsOffered.map((skill, idx) => (
+              <li key={idx} className="bg-blue-100 px-2 py-1 rounded text-sm">
                 {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Wanted Skills */}
-        <div className="mt-2">
-          <span className="text-sm font-medium text-gray-600">Wants to Learn:</span>
-          <div className="flex flex-wrap gap-2 mt-1">
-            {user.wantedSkills.map((skill, index) => (
-              <span
-                key={index}
-                className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
+              </li>
+            ))
+          ) : (
+            <li className="text-gray-400 italic">No offered skills</li>
+          )}
+        </ul>
       </div>
 
-      {/* Right: Button + Rating */}
-      <div className="flex flex-col items-end justify-between ml-4">
-        <button className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">
-          Request
-        </button>
-        <div className="mt-3 text-yellow-500 text-sm">
-          {'★'.repeat(Math.floor(user.rating))}
-          <span className="text-gray-600 ml-1">({user.rating})</span>
-        </div>
+      {/* Skills Wanted */}
+      <div className="mt-2">
+        <p className="text-sm font-semibold text-gray-700">Wants:</p>
+        <ul className="flex flex-wrap gap-2 mt-1">
+          {skillsWanted.length ? (
+            skillsWanted.map((skill, idx) => (
+              <li key={idx} className="bg-green-100 px-2 py-1 rounded text-sm">
+                {skill}
+              </li>
+            ))
+          ) : (
+            <li className="text-gray-400 italic">No wanted skills</li>
+          )}
+        </ul>
+      </div>
+
+      {/* Rating */}
+      <div className="mt-3 text-yellow-500 text-sm">
+        {"★".repeat(Math.round(rating))}
+        {"☆".repeat(5 - Math.round(rating))}
+        <span className="ml-2 text-gray-500">{rating.toFixed(1)}</span>
       </div>
     </div>
   );

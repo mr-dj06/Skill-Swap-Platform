@@ -1,10 +1,15 @@
 import express from "express";
-import { searchBySkill } from "../controllers/user.controller.js";
+import {
+  getUserById,
+  getAllUsers,
+  searchBySkill,
+} from "../controllers/user.controller.js";
 import { verifyToken } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
-// Skill search route
-router.get("/search", verifyToken, searchBySkill);
+router.get("/", getAllUsers);
+router.get("/:id", getUserById);
+router.get("/search", searchBySkill);
 
 export default router;
